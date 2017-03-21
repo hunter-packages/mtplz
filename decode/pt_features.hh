@@ -22,7 +22,8 @@ class PhraseTableFeatures : public Feature {
     void InitPassthroughPhrase(pt::Row *passthrough, TargetPhraseType type) const override {
       std::size_t num_features = DenseFeatureCount();
       for (std::size_t i = 0; i < num_features; ++i) {
-        phrase_access_->dense_features(passthrough)[i] = DEFAULT_VALUE;
+        //phrase_access_->dense_features(passthrough)[i] = DEFAULT_VALUE;
+        memcpy(phrase_access_->dense_features(passthrough)[i], &DEFAULT_VALUE, sizeof(DEFAULT_VALUE));
       }
     }
 
